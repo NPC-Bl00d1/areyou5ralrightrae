@@ -1,0 +1,27 @@
+.heading{
+    color:white;
+    font-size: 23px;
+    width:100%;
+    margin:0px;
+    background-color: #39454d;
+    
+    }
+
+
+    body{
+
+background-size: cover;
+
+    }
+
+ .note{
+    font-size:15px;
+    color:#bfe7ff;
+ }
+
+
+ canvas{
+
+border: solid 5px black;
+
+ }
