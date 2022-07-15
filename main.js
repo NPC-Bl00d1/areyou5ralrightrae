@@ -1,9 +1,11 @@
 var grace = "";
 var scarynight = "";
-leftY = 0;
-leftX = 0;
-rightY = 0;
-rightX = 0;
+var leftY = 0;
+var leftX = 0;
+var rightY = 0;
+var rightX = 0;
+var leftscore = 0;
+var songplaying1 = "";
 
 
 function preload(){
@@ -38,6 +40,10 @@ function gotPoses(results){
 if(results.length > 0){
 
 console.log(results);
+leftscore = results[0].pose.keypoints[9].score;
+console.log("left score = " + leftscore);
+
+
 leftY = results[0].pose.leftWrist.y;
 leftX = results[0].pose.leftWrist.x;
 rightY = results[0].pose.rightWrist.y;
@@ -54,5 +60,25 @@ console.log(" right x = " + rightX + " right y = " + rightY)
 function draw(){
     
     image(video, 0, 0, 600, 500);
+
+
+    fill("#66a1ff");
+    stroke("#66a1ff");
+
+
+    songplaying1 = grace.isPlaying();
+
+    if(leftscore > 0.2){
+        circle(leftX, leftY, 20);
+        scarynight.stop();
+
+        if(songplaying1 = "true"){
+
+            grace.play();
+            document.getElementById("um").innerHTML = "Now Playing: Grace";
+
+        }
+
+    }
     
     }
