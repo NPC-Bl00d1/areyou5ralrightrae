@@ -5,7 +5,9 @@ var leftX = 0;
 var rightY = 0;
 var rightX = 0;
 var leftscore = 0;
+var rightscore = 0;
 var songplaying1 = "";
+var songplaying2 = "";
 
 
 function preload(){
@@ -42,7 +44,8 @@ if(results.length > 0){
 console.log(results);
 leftscore = results[0].pose.keypoints[9].score;
 console.log("left score = " + leftscore);
-
+leftscore = results[0].pose.keypoints[10].score;
+console.log("right score = " + rightscore);
 
 leftY = results[0].pose.leftWrist.y;
 leftX = results[0].pose.leftWrist.x;
@@ -67,6 +70,7 @@ function draw(){
 
 
     songplaying1 = grace.isPlaying();
+    songplaying2 = scarynight.isPlaying();
 
     if(leftscore > 0.2){
         circle(leftX, leftY, 20);
@@ -76,6 +80,20 @@ function draw(){
 
             grace.play();
             document.getElementById("um").innerHTML = "Now Playing: Grace";
+
+        }
+
+    }
+
+    if(rightscore > 0.2){
+
+        circle(rightx, righty, 20);
+        grace.stop();
+
+        if(songplaying2 = "true"){
+
+            scarynight.play();
+            document.getElementById("um").innerHTML = "Now Playing: Scary Night";
 
         }
 
